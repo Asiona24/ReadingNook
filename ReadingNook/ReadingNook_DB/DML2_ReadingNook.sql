@@ -32,10 +32,10 @@ INSERT INTO Autore_libro(id_autore,id_libro) VALUES
 ;
 
 INSERT INTO Genere(genere) VALUES
-('Diario'),
-('Narrativa Storica'),
-('Bambini e Ragazzi'),
-('Saggio')
+('Diary'),
+('Hystorical'),
+('Kids'),
+('Assay')
 ;
 
 INSERT INTO Genere_libro(id_libro,id_genere) VALUES

@@ -1,14 +1,15 @@
 <?php
   session_start();
   if(!empty($_SESSION['userid'])){
-    header('Location: ' . '/ReadingNook/home/profile/area_privata.php');
+    header('Location: ' . '/ReadingNook//home/area_privata.php');
   }
+  
 ?>
 
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ReadingNook</title>
     <!--Per le stelline-->
@@ -17,7 +18,7 @@
     <link rel="icon" type="image/x-icon" href="/ReadingNook/images/favicon.ico">
     <!-- Nostre Modifiche-->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="/css/login.css">
     <!--Boostrap Icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <!-- Per aggiungere effetto on hover al nav con jquery-->
@@ -49,63 +50,8 @@
 </head>
 
 <body>
-  <div class="sticky-top">
-    <nav class="navbar navbar-expand-lg ">
-      <div class="container-fluid">
-        <a class="navbar-brand" id="titolo" href="/ReadingNook/home/home.php">ReadingNook</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/ReadingNook/home/home.php">Home</a>
-            </li>
-
-            <li class="nav-item dropdown">
-
-
-              <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Browse
-              </a>
-
-
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li id="author-page"><a class="dropdown-item" href="/ReadingNook/home/authors.php">Authors</a></li>
-                <li><a class="dropdown-item" href="/ReadingNook/home/generi.php">Genres</a></li>
-              </ul>
-
-
-            </li>
-
-            <li class="nav-item">
-              <a href="/ReadingNook/home/profile/area_privata.php" class="nav-link">Profile</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="/ReadingNook/home/contacts.php">Contacts</a>
-            </li>
-            
-          </ul>
-          <form class="d-flex justify-content-center" id="form">
-            <!-- DA SOSTITUIRE LE ICONE -->
-           
-            <input id="search" class="form-control" type="text" autocomplete="off" placeholder="Search" aria-label="Search">
-            
-            <ul class="dropdown" id="dropdown">  
-            </ul>
-          
-
-
-            <button id="login-btn" type="button" class="btn btn-outline-success m-1 ms-2" onclick="location.href=' /ReadingNook/login/login.php'"><i class="bi bi-person-circle fa-lg p-1"></i></button>
-          </form>
-          
-        </div>
-      </div>
-    </nav>
-  </div>
+    
+    <?php include "/Users/asiamazzotta/Desktop/ReadingNook/componenti/navbar.php"; ?>
 
     <section class="form-02-main">
       <div class="container">
@@ -128,6 +74,7 @@
                     <input type="checkbox" class="form-check-input" onclick="myFunction()">Show Password
                   </div>
                   
+                  
                   <div id="messaggio"></div>
                   <div class="form-group">
                     <input type="submit" id="submit-login" value="Login" class="_btn_04">
@@ -136,15 +83,7 @@
                 </form>
                 
 
-                <div class="checkbox form-group">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="">
-                    <label class="form-check-label" for="">
-                      Remember me
-                    </label>
-                  </div>
-                  <a href="#">Forgot Password</a>
-                </div>
+               
 
                 
   
@@ -163,27 +102,48 @@
       </div>
     </section>
 
+    <div id="dom-target" style="display: none;">
+      <?php
+          
+      ?>
+  </div>
+
 
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/ajax/cerca.js"></script>
+    <script src="/funzioni/cerca.js"></script>
 
 
     <!--SCRIPT PER SIGN IN-->
     <script type="text/javascript">
+      //salvo la pagina precedente se necessaria (ad esempio quando faccio il redirect per scrivere una recensione)
+      var url = "";
+      $(document).ready(function(){
+        if(sessionStorage.getItem("url") != null){
+          url = sessionStorage.getItem("url");
+          sessionStorage.removeItem("url");
+        }
+      })
+
+
       $("#b-form").submit(function() {
         // passo i dati (via POST) al file PHP che effettua le verifiche 
-        $.post("/ajax/process-login.php", { password: $('#password-login').val(), email: $("#email-login").val() }, function(risposta) {
+        $.post("/funzioni/process-login.php", { password: $('#password-login').val(), email: $("#email-login").val() }, function(risposta) {
           // se i dati sono corretti...
           if (risposta == 1) {
             // applico l'effetto allo span con id "messaggio"
             $("#messaggio").fadeTo(200, 0.1, function() {
               // per prima cosa mostro, con effetto fade, un messaggio di attesa
               $(this).removeClass().addClass('corretto').text('Login in corso...').css('color','black').fadeTo(900, 1, function() {
-                // al termine effettuo il redirect alla pagina privata
-                document.location = '/ReadingNook/home/profile/area_privata.php';
+                // al termine effettuo il redirect alla pagina privata o alla pagina precedente se serve
+                if(url!=""){
+                  document.location = url;
+                }else{
+                  document.location = '/ReadingNook//home/area_privata.php';
+                }
+                
               });
             });
           // se, invece, i dati non sono corretti...

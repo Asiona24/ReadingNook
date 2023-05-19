@@ -1,30 +1,49 @@
-INSERT INTO Libro(isbn,titolo,data_rilascio,copertina) VALUES
-(9788822719683,'Gita al faro','2018-06-21','/ReadingNook/images/Copertine/gita_al_faro.jpeg'),
-(9788807902826,'Orlando','2017-11-9','/ReadingNook/images/Copertine/orlando.jpeg'),
-(9788804663089,'La fattoria degli animali','2016-05-31','/ReadingNook/images/Copertine/la_fattoria_degli_animali.jpeg'),
-(9788806245887,'La luna e i falò','2020-05-26','/ReadingNook/images/Copertine/la_luna_e_i_falo.jpeg'),
-(9788806221355,'Una donna spezzata','2014-04-22','/ReadingNook/images/Copertine/una_donna_spezzata.jpeg'),
-(9788806223342,'Menzogna e sortilegio','2014-07-18','/ReadingNook/images/Copertine/menzogna_e_sortilegio.jpeg'),
-(9788855449861,'A un passo da un mondo perfetto','2020-06-23','/ReadingNook/images/Copertine/a_un_passo_da_un_mondo_perfetto.jpeg'),
-(2000000098395,'La caduta di Gondolin','2023-02-15','/ReadingNook/images/Copertine/la_caduta_di_gondolin.jpeg'),
-(9788807900730,'La metamorfosi','2013-11-01','/ReadingNook/images/Copertine/la_metamorfosi.jpeg'),
-(9788806223427,'Il processo','2014-07-18','/ReadingNook/images/Copertine/il_processo.jpeg'),
-(9788807901744,'Il castello','2015-01-07','/ReadingNook/images/Copertine/il_castello.jpeg'),
-(9788854174511,'Emma','2015-03-05','/ReadingNook/images/Copertine/emma.jpeg'),
-(9788854165052,'Orgoglio e pregiudizio','2014-05-22','/ReadingNook/images/Copertine/orgoglio_e_pregiudizio.jpeg'),
-(9788854188143,'Persuasione','2015-10-29','/ReadingNook/images/Copertine/persuasione.jpeg')
+INSERT INTO Libro(isbn,titolo,data_rilascio,copertina,sito,lingua) VALUES
+(9788822719683,'Gita al faro','2018-06-21','/ReadingNook/images/Copertine/gita_al_faro.jpeg','https://www.amazon.it/Gita-al-faro-Virginia-Woolf/dp/8806239228/ref=sr_1_1?__mk_it_IT=ÅMÅŽÕÑ&crid=15GTNZOKHWMM0&keywords=gita+al+faro&qid=1684411154&sprefix=gita+al+faro%2Caps%2C124&sr=8-1','Italian'),
+(9788807902826,'Orlando','2017-11-9','/ReadingNook/images/Copertine/orlando.jpeg','https://www.amazon.it/Orlando-Virginia-Woolf/dp/8807902826/ref=sr_1_2?__mk_it_IT=ÅMÅŽÕÑ&crid=2CPZHDUISXVFO&keywords=orlando&qid=1684411173&sprefix=orlando%2Caps%2C103&sr=8-2','Italian'),
+(9788804663089,'La fattoria degli animali','2016-05-31','/ReadingNook/images/Copertine/la_fattoria_degli_animali.jpeg','https://www.amazon.it/Fattoria-degli-animali-Orwell/dp/8807903792/ref=sr_1_1?keywords=la+fattoria+degli+animali+orwell&qid=1684411189&sprefix=la+fatto%2Caps%2C106&sr=8-1','Italian'),
+(9788806245887,'La luna e i falò','2020-05-26','/ReadingNook/images/Copertine/la_luna_e_i_falo.jpeg','https://www.amazon.it/luna-i-falò-Cesare-Pavese/dp/886758233X/ref=sr_1_2?keywords=la+luna+e+i+falo+cesare+pavese&qid=1684411202&sprefix=la+luna+%2Caps%2C112&sr=8-2','Italian'),
+(9788806221355,'Una donna spezzata','2014-04-22','/ReadingNook/images/Copertine/una_donna_spezzata.jpeg','https://www.amazon.it/Una-donna-spezzata-Simone-Beauvoir/dp/8806221353/ref=sr_1_1?__mk_it_IT=ÅMÅŽÕÑ&crid=269INWJSUH8YY&keywords=una+donna+spezzata&qid=1684411806&sprefix=una+donna+spezzata%2Caps%2C119&sr=8-1','Italian'),
+(9788806223342,'Menzogna e sortilegio','2014-07-18','/ReadingNook/images/Copertine/menzogna_e_sortilegio.jpeg','https://www.amazon.it/Menzogna-sortilegio-Elsa-Morante/dp/8806223348/ref=sr_1_1?keywords=menzogna+e+sortilegio+elsa+morante&qid=1684411255&sprefix=menzo%2Caps%2C102&sr=8-1','Italian'),
+(9788855449861,'A un passo da un mondo perfetto','2020-06-23','/ReadingNook/images/Copertine/a_un_passo_da_un_mondo_perfetto.jpeg','https://www.amazon.it/passo-mondo-perfetto-Daniela-Palumbo/dp/8855449869/ref=sr_1_1?crid=293LPQBUAT6X1&keywords=a+un+passo+da+un+mondo+perfetto&qid=1684411271&sprefix=a+un+passo+da+un+%2Caps%2C111&sr=8-1','Italian'),
+(2000000098395,'La caduta di Gondolin','2023-02-15','/ReadingNook/images/Copertine/la_caduta_di_gondolin.jpeg','https://www.amazon.it/caduta-Gondolin-John-R-Tolkien/dp/8830102369/ref=sr_1_1?keywords=la+caduta+di+gondolin&qid=1684411290&sprefix=la+caduta+di+gon%2Caps%2C97&sr=8-1','Italian'),
+(9788807900730,'La metamorfosi','2013-11-01','/ReadingNook/images/Copertine/la_metamorfosi.jpeg','https://www.amazon.it/metamorfosi-classici-cartacei-traduzione-illustrazioni/dp/B0BGQJW4NQ/ref=sr_1_3?keywords=la+metamorfosi+di+kafka&qid=1684411302&sprefix=la+meta%2Caps%2C103&sr=8-3','Italian'),
+(9788806223427,'Il processo','2014-07-18','/ReadingNook/images/Copertine/il_processo.jpeg','https://www.amazon.it/processo-Franz-Kafka/dp/8845934675/ref=sr_1_1?keywords=il+processo+di+kafka&qid=1684411319&sprefix=il+pro%2Caps%2C116&sr=8-1','Italian'),
+(9788807901744,'Il castello','2015-01-07','/ReadingNook/images/Copertine/il_castello.jpeg','https://www.amazon.it/castello-Franz-Kafka/dp/8807901749/ref=sr_1_1?keywords=il+castello+kafka&qid=1684411333&sprefix=il+caste%2Caps%2C111&sr=8-1','Italian'),
+(9788854174511,'Emma','2015-03-05','/ReadingNook/images/Copertine/emma.jpeg','https://www.amazon.it/Emma-eNewton-Classici-Jane-Austen-ebook/dp/B0062ZNHP2/ref=sr_1_42?__mk_it_IT=ÅMÅŽÕÑ&crid=3BEJ056T7FNJK&keywords=emma&qid=1684411409&sprefix=emma%2Caps%2C112&sr=8-42','Italian'),
+(9788854165052,'Orgoglio e pregiudizio','2014-05-22','/ReadingNook/images/Copertine/orgoglio_e_pregiudizio.jpeg','https://www.amazon.it/Orgoglio-pregiudizio-Ediz-integrale-Austen/dp/8854165050/ref=sr_1_3?keywords=orgoglio+e+pregiudizio+libro&qid=1684411377&sprefix=orgo%2Caps%2C107&sr=8-3','Italian'),
+(9788854188143,'Persuasione','2015-10-29','/ReadingNook/images/Copertine/persuasione.jpeg','https://www.amazon.it/Persuasione-Ediz-integrale-Jane-Austen/dp/885418814X/ref=sr_1_38?__mk_it_IT=ÅMÅŽÕÑ&crid=GEERTUDVV036&keywords=persuasione&qid=1684411393&sprefix=persuasione%2Caps%2C104&sr=8-38','Italian'),
+(2000000098869,'La bella estate','2023-02-14','/ReadingNook/images/Copertine/la_bella_estate.jpeg','https://www.amazon.it/bella-estate-Cesare-Pavese/dp/8867582305/ref=sr_1_1?__mk_it_IT=ÅMÅŽÕÑ&crid=27ALXA86UPJJ5&keywords=la+bella+estate&qid=1684411446&sprefix=la+bella+estate%2Caps%2C102&sr=8-1','Italian'),
+(9788806245948,'Il mestiere di vivere','2020-05-26','/ReadingNook/images/Copertine/il_mestiere_di_vivere.jpeg','https://www.amazon.it/mestiere-vivere-1935-1950-taccuino-segreto/dp/8817155659/ref=sr_1_1?__mk_it_IT=ÅMÅŽÕÑ&crid=2OJFTDGY0K9VI&keywords=il+mestiere+di+vivere&qid=1684411489&sprefix=il+mestiere+di+vivere+%2Caps%2C92&sr=8-1','Italian'),
+(9788856670226,'Le valigie di Auschwitz','2019-03-11','/ReadingNook/images/Copertine/le_valigie_di_auschwitz.jpeg','https://www.amazon.it/valigie-Auschwitz-Daniela-Palumbo/dp/8856670224/ref=sr_1_1?keywords=le+valigie+di+auschwitz&qid=1684411507&sprefix=le+valigie+di%2Caps%2C102&sr=8-1','Italian'),
+(9788898519651,'I miti delle costellazioni','2019-03-28','/ReadingNook/images/Copertine/i_miti_delle_costellazioni.jpeg','https://www.amazon.it/miti-delle-costellazioni-Daniela-Palumbo/dp/8898519656/ref=sr_1_1?keywords=i+miti+delle+costellazioni&qid=1684411532&sprefix=i+miti+delle+co%2Caps%2C92&sr=8-1','Italian'),
+(9788806222642,'L''isola di Arturo','2014-07-18','/ReadingNook/images/Copertine/lisola_di_arturo.jpeg','https://www.amazon.it/Lisola-Arturo-Elsa-Morante/dp/8806222643/ref=sr_1_1?keywords=l%27isola+di+arturo&qid=1684411553&sprefix=l%27isola%2Caps%2C98&sr=8-1','Italian'),
+(9788806219642,'La storia','2014-02-10','/ReadingNook/images/Copertine/la_storia.jpeg','https://www.amazon.it/storia-Elsa-Morante/dp/8806219642/ref=sr_1_1?__mk_it_IT=ÅMÅŽÕÑ&crid=XWGG33QY2797&keywords=la+storia&qid=1684411567&sprefix=la+storia%2Caps%2C109&sr=8-1','Italian'),
+(9788804668237,'1984','2016-06-21','/ReadingNook/images/Copertine/1984.jpeg','https://www.amazon.it/1984-George-Orwell/dp/8804668237/ref=sr_1_5?__mk_it_IT=ÅMÅŽÕÑ&crid=1TUDHRNVDP7AN&keywords=1984&qid=1684411582&sprefix=1984%2Caps%2C112&sr=8-5','Italian'),
+(9788804686439,'Una boccata d''aria','2018-03-27','/ReadingNook/images/Copertine/una_boccata_daria.jpeg','https://www.amazon.it/Una-boccata-daria-George-Orwell/dp/880468643X/ref=sr_1_1?keywords=una+boccata+d+aria+orwell&qid=1684411600&sprefix=una+boccata%2Caps%2C102&sr=8-1','Italian'),
+(9788845268342,'Lo Hobbit','2012-06-20','/ReadingNook/images/Copertine/lo_hobbit.jpeg','https://www.amazon.it/Hobbit-viaggio-inaspettato-John-Tolkien/dp/8845268349/ref=sr_1_1?crid=2QRH5MZ0YMOEK&keywords=lo+hobbit+libro&qid=1684411634&sprefix=lo+hobbit+%2Caps%2C109&sr=8-1','Italian'),
+(9788830104716,'Il signore degli anelli','2020-10-28','/ReadingNook/images/Copertine/il_signore_degli_anelli.jpeg','https://www.amazon.it/signore-degli-anelli-John-Tolkien/dp/883010471X/ref=sr_1_2?crid=3SN2PHYFI8MFN&keywords=il+signore+degli+anelli+libro&qid=1684411666&sprefix=il+signore+degli+anelli+%2Caps%2C109&sr=8-2','Italian'),
+(9788842822318,'Il secondo sesso','2016-03-03','/ReadingNook/images/Copertine/il_secondo_sesso.jpeg','https://www.amazon.it/secondo-sesso-Simone-Beauvoir/dp/8842822310/ref=sr_1_1?__mk_it_IT=ÅMÅŽÕÑ&crid=2ZLAW5HCITTW&keywords=il+secondo+sesso&qid=1684411683&sprefix=il+secondo+sesso%2Caps%2C103&sr=8-1','Italian'),
+(9788806222017,'Memorie di una ragazza perbene','2014-05-19','/ReadingNook/images/Copertine/memorie_di_una_ragazza_perbene.jpeg','https://www.amazon.it/Memorie-ragazza-perbene-Simone-Beauvoir/dp/8806222015/ref=sr_1_1?__mk_it_IT=ÅMÅŽÕÑ&crid=PEWQ8OVAAXTS&keywords=memorie+d%27una+ragazza+perbene&qid=1684411707&sprefix=memorie+di+una+ragazza+perbene%2Caps%2C100&sr=8-1','Italian'),
+(9788807900594,'La signora Dalloway','2013-06-05','/ReadingNook/images/Copertine/la_signora_dalloway.jpeg','https://www.amazon.it/signora-Dalloway-Virginia-Woolf/dp/8807900599/ref=sr_1_1?keywords=la+signora+dalloway&qid=1684411720&sprefix=la+signo%2Caps%2C103&sr=8-1','Italian')
 ;
 
-INSERT INTO Autore(nome,cognome) VALUES
-('Virginia','Woolf'),
-('George','Orwell'),
-('Cesare','Pavese'),
-('Simone','De Beauvoir'),
-('Elsa','Morante'),
-('Daniela','Palumbo'),
-('John','R.R. Tolkien'),
-('Franz','Kafka'),
-('Jane','Austen')
+
+
+INSERT INTO Autore(nome,cognome,bio,foto) VALUES
+('Virginia','Woolf','Adeline Virginia Woolf (25 January 1882 - 28 March 1941) was an English writer. She is considered one of the most important modernist 20th-century authors and a pioneer in the use of stream of consciousness as a narrative device. During the interwar period, Woolf was a significant figure in London literary society and a member of the Bloomsbury Group. Her most famous works include the novels Mrs. Dalloway (1925), To the Lighthouse (1927), and Orlando (1928), and the book-length essay A Room of One"s Own (1929) with its famous dictum, "a woman must have money and a room of her own if she is to write fiction." ','https://images.gr-assets.com/authors/1419596619p5/6765.jpg'),
+('George','Orwell','Eric Arthur Blair (25 June 1903 - 21 January 1950), better known by his pen name George Orwell, was an English novelist, essayist, journalist, and critic. His work is characterised by lucid prose, social criticism, opposition to totalitarianism, and support of democratic socialism. Orwell is best known for the dystopian novel Nineteen Eighty-Four (published in 1949) and the satirical novella Animal Farm (1945); they have together sold more copies than any two books by any other twentieth-century author. Orwell"s influence on contemporary culture, popular and political, continues decades after his death: his neologism "Orwellian"- now a byword for any oppressive or manipulative social phenomenon opposed to a free society- have entered the vernacular. ', 'https://images.gr-assets.com/authors/1588856560p8/3706.jpg'),
+('Cesare','Pavese','Cesare Pavese (9 September 1908 - 27 August 1950) was an Italian novelist, poet, short story writer, translator, literary critic, and essayist. He is often referred to as one of the most influential Italian writers of his time. The bulk of Pavese"s work, mostly short stories and novellas appeared between the end of the war and his death. Partly through the influence of Melville, Pavese became preoccupied with myth, symbol, and archetype. The novel considered his best, La luna e i falò (1950; The Moon and the Bonfires, 1950), is a bleak, yet compassionate story of a hero who tries to find himself by visiting the place in which he grew up. Shortly after receiving the Strega Prize, Pavese took his own life in his hotel room by taking an overdose of pills. ','https://images.gr-assets.com/authors/1588856384p8/76241.jpg'),
+('Simone','De Beauvoir','Simone Lucie Ernestine Marie Bertrand de Beauvoir (9 January 1908 - 14 April 1986) was a French existentialist philosopher, writer, social theorist, and feminist activist. Though she did not consider herself a philosopher, nor was she considered one at the time of her death, she had a significant influence on both feminist existentialism and feminist theory. Simone de Beauvoir"s The Second Sex is considered a foundational work in the history of feminism. Beauvoir had denied being feminist multiple times but ultimately admitted that she was one after The Second Sex became crucial in the world of feminism.The work has had a profound influence, opening the way for second-wave feminism in the United States, Canada, Australia, and around the world.','https://images.gr-assets.com/authors/1555042345p8/5548.jpg'),
+('Elsa','Morante','Elsa Morante (18 August 1912 - 25 November 1985) was an Italian novelist, poet, translator and children"s books author. Her novel La storia (History) is included in the Bokklubben World Library List of 100 Best Books of All Time. Elsa Morante began writing short stories which appeared in various publications and periodicals, including periodicals for children, in the 1930s. She married the novelist Alberto Moravia in 1941, and through him she met many of the leading Italian thinkers and writers of the day as Pier Paolo Pasolini, Dario Bellezza, Sandro Penna, Attilio Bertolucci, Umberto Saba and many others.','https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Elsa_morante_gatti.jpg/1280px-Elsa_morante_gatti.jpg'),
+('Daniela','Palumbo','Daniela Palumbo (Roma, 6 March 1965) is a journalist and an Italian writer. She published her first novel in 1998, with Paoline Editoriale Libri, Il mio migliore amico, a novel about disability arrived finalist in the contest for children literature, named Il Battello a Vapore 1997. In 2010 she won that prize with Le valigie di Auschwitz, published in January 2011 by Edizioni Piemme. She followed two series of books for children: the first one, named Strettamente Personale, for adolescents, the other one named Mi Riguarda, for 9 years old children. As journalist she works for Cooperativa Oltre, which is connected to the Caritas Ambrosiana. She is an editor of the monthly publication Scarp de" tenis, historical journal of the streets born from a project of the same Caritas Ambrosiana in 1996.','https://www.confabulare.it/wp-content/uploads/2018/07/Daniela-Palumbo_2-300x300.jpg'),
+('John','R.R. Tolkien', 'John Ronald Reuel Tolkien (January 1892 - 2 September 1973) was an English writer and philologist. He was the author of the high fantasy works The Hobbit and The Lord of the Rings. Tolkien was a professor at the Universities of Leeds and Oxford for almost forty years, teaching Old and Middle English, as well as Old Norse and Gothic. His illuminating lectures on works such as the Old English epic poem, Beowulf, illustrate his deep knowledge of ancient languages and at the same time provide new insights into peoples and legends from a remote past. Alongside his professional work, he invented his own languages and began to create what he called a mythology for England. But his literary work did not start and end with Middle-earth, he also wrote poetry, children’s stories and fairy tales for adults.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/J._R._R._Tolkien%2C_ca._1925.jpg/800px-J._R._R._Tolkien%2C_ca._1925.jpg'),
+('Franz','Kafka', 'Franz Kafka (3 July 1883 - 3 June 1924) was a German-speaking Bohemian novelist and short-story writer based in Prague, who is widely regarded as one of the major figures of 20th-century literature. His work fuses elements of realism and the fantastic. It typically features isolated protagonists facing bizarre or surrealistic predicaments and incomprehensible socio-bureaucratic powers. It has been interpreted as exploring themes of alienation, existential anxiety, guilt, and absurdity. His best known works include the novella The Metamorphosis and novels The Trial and The Castle. The term Kafkaesque has entered English to describe absurd situations like those depicted in his writing.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Kafka1906_cropped.jpg/170px-Kafka1906_cropped.jpg'),
+('Jane','Austen','Jane Austen was an English novelist whose works of romantic fiction, set among the landed gentry, earned her a place as one of the most widely read writers in English literature, her realism and biting social commentary cementing her historical importance among scholars and critics. She was educated primarily by her father and older brothers as well as through her own reading. The steadfast support of her family was critical to her development as a professional writer. She experimented with various literary forms, including the epistolary novel which she tried then abandoned, and wrote and extensively revised three major novels and began a fourth. From 1811 until 1816, with the release of Sense and Sensibility (1811), Pride and Prejudice (1813), Mansfield Park (1814) and Emma (1815), she achieved success as a published writer. ', 'https://t0.gstatic.com/licensed-image?q=tbn:ANd9GcRnQivSm3AoVCGDmQPk1Lx-Nnhw-C9__-BMdLPme2eOyw1rWQXXxJPEr2JrNvXE-y7i'),
+('Zadie','Smith','Zadie Smith (born Sadie; 25 October 1975) is an English novelist, essayist, and short-story writer. Her debut novel, White Teeth (2000), immediately became a best-seller and won several awards. She has been a tenured professor in the Creative Writing faculty of New York University since September 2010. Zadie was elected a fellow of the Royal Society of Literature in 2002, and was listed as one of Granta"s 20 Best Young British Novelists in 2003 and again in 2013. White Teeth won multiple literary awards including the James Tait Black Memorial Prize, the Whitbread First Novel Award and the Guardian First Book Award. On Beauty was shortlisted for the Man Booker Prize and won the Orange Prize for Fiction, and NW was shortlisted for the Baileys Women"s Prize for Fiction.','https://images.gr-assets.com/authors/1478188567p8/2522.jpg'),
+('Pajtim','Statovci','Pajtim Statovci (born 1990) is a Finnish novelist. His debut novel, Kissani Jugoslavia, was published in 2014, winning the Helsingin Sanomat Literature Prize for best debut novel in Finnish for that year, and was published in 2017 as My Cat Yugoslavia in the UK and US. It was made into a play and staged at the Finnish National Theater in Helsinki in 2018. His second novel, Tiranan sydän, won the Toisinkoinen Literature Prize for 2016, and was published as Crossing in the UK and the US in 2019. ','https://images.gr-assets.com/authors/1536389667p8/8431418.jpg'),
+('Yasmina','Reza','Yasmina Reza began work as an actress, appearing in several new plays as well as in plays by Molière and Marivaux. In 1987 she wrote Conversations after a Burial, which won the Molière Award for Best Author. Following this, she translated Kafka"s Metamorphosis for Roman Polanski and was nominated for a Molière Award for Best Translation. Her second play, Winter Crossing, won the 1990 Molière for Best Fringe Production, and her next play The Unexpected Man, enjoyed successful productions in England, France, Scandinavia, Germany and New York. In 1995, Art premiered in Paris and went on to win the Molière Award for Best Author. Since then it has been produced world-wide and translated into 20 languages. ','https://images.gr-assets.com/authors/1478215425p5/14211.jpg'),
+('Milan','Kundera','People best know Czech-born writer Milan Kundera for his novels, including The Joke (1967), The Book of Laughter and Forgetting (1979), and The Unbearable Lightness of Being (1984), all of which exhibit his extreme though often comical skepticism. Since 1975, he lived in exile in France and in 1981 as a naturalized citizen. Kundera wrote in Czech and French. He revises the French translations of all his books; people therefore consider these original works as not translations. The Communist government of Czechoslovakia censored and duly banned his books from his native country, the case until the downfall of this government in the velvet revolution of 1989.','https://cdn.xsd.cz/resize/5120e650e02139e8827c15a3d294cfc4_resize=1750,1232_.jpg?hash=d3358cc81ad3575589ec9656f02f8523')
 ;
 
 INSERT INTO Autore_libro(id_autore,id_libro) VALUES
@@ -41,23 +60,41 @@ INSERT INTO Autore_libro(id_autore,id_libro) VALUES
 (8,11),
 (9,12),
 (9,13),
-(9,14)
+(9,14),
+(3,15),
+(3,16),
+(6,17),
+(6,18),
+(5,19),
+(5,20),
+(2,21),
+(2,22),
+(7,23),
+(7,24),
+(4,25),
+(4,26),
+(1,27)
 ;
 
 INSERT INTO Genere(genere) VALUES
-('Romanzo'),
-('Narrativa Psicologica'),
-('Narrativa Biografica'),
-('Allegoria'),
-('Satira'),
-('Favola'),
-('Fantascienza'),
-('Narrativa'),
+('Novel'),
+('Psychological Novel'),
+('Biography '),
+('Allegory'),
+('Satire'),
+('Fable'),
+('Science Fiction'),
+('Fiction'),
 ('Novella'),
-('Narrativa Fantasy'),
-('Narrativa Distopica'),
-('Commedia')
+('Fantasy'),
+('Dystopian Fiction'),
+('Comedy'),
+('Diary'),
+('Hystorical'),
+('Kids'),
+('Assay')
 ;
+
 
 INSERT INTO Genere_libro(id_libro,id_genere) VALUES
 (1,1),
@@ -84,7 +121,30 @@ INSERT INTO Genere_libro(id_libro,id_genere) VALUES
 (12,8),
 (12,12),
 (13,1),
-(14,1)
+(14,1),
+(15,1),
+(16,3),
+(16,13),
+(17,8),
+(17,14),
+(18,15),
+(19,1),
+(19,8),
+(20,1),
+(20,14),
+(21,1),
+(21,8),
+(21,11),
+(22,5),
+(22,8),
+(23,1),
+(23,10),
+(24,10),
+(25,16),
+(26,3),
+(27,1),
+(27,2)
 ;
+
 
 

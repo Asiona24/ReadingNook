@@ -1,8 +1,5 @@
 <?php
 
-    if(!(isset($_GET['nome']) || (isset($_GET['cognome'])))){
-        header('Location: ' . '/ReadingNook/home/authors.php');
-    }else{
         $connect = pg_connect("host=localhost port=5432 dbname=readingnook user=postgres password=24082001") or die('Could not connect: ' . pg_last_error());
         $nome = $_GET['nome'];
         $cognome = $_GET['cognome'];
@@ -16,7 +13,7 @@
         $output = "";
 
 
-    }
+    
 ?> 
 
 <!doctype html>
@@ -40,63 +37,7 @@
 </head>
 
 <body>
-  <div class="sticky-top">
-    <nav class="navbar navbar-expand-lg ">
-      <div class="container-fluid">
-        <a class="navbar-brand" id="titolo" href="/ReadingNook/home/home.php">ReadingNook</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/ReadingNook/home/home.php">Home</a>
-            </li>
-
-            <li class="nav-item dropdown">
-
-
-              <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Browse
-              </a>
-
-
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li id="author-page"><a class="dropdown-item" href="/ReadingNook/home/authors.php">Authors</a></li>
-                <li><a class="dropdown-item" href="/ReadingNook/home/generi.php">Genres</a></li>
-              </ul>
-
-
-            </li>
-
-            <li class="nav-item">
-              <a href="/ReadingNook/home/area_privata.php" class="nav-link">Profile</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="/ReadingNook/home/contacts.php">Contacts</a>
-            </li>
-            
-          </ul>
-          <form class="d-flex justify-content-center" id="form">
-            <!-- DA SOSTITUIRE LE ICONE -->
-           
-            <input id="search" class="form-control" type="text" autocomplete="off" placeholder="Search" aria-label="Search">
-            
-            <ul class="dropdown" id="dropdown">  
-            </ul>
-          
-
-
-            <button id="login-btn" type="button" class="btn btn-outline-success m-1 ms-2" onclick="location.href=' /ReadingNook/login/login.php'"><i class="bi bi-person-circle fa-lg p-1"></i></button>
-          </form>
-          
-        </div>
-      </div>
-    </nav>
-  </div>
+  <?php include "/Users/asiamazzotta/Desktop/ReadingNook/componenti/navbar.php"; ?>
 
   
 
@@ -136,10 +77,11 @@
                 $val = ($valutazione / 5) * 100;
                 $val = round($val/10)*10;
                 $val = "$val%";
-        
+                
                 $output .= "
                 
                 <div class=\"col-md-4 p-3 mt-1\">
+                  <a href=\"/ReadingNook/books/book.php?titolo=$titolo\" class=\"text-decoration-none\">
                     <div class=\"card\">
                         <img src=\"$copertina\" class=\"card-img-top mt-2 copertina\">
                         <div class=\"card-body\">
@@ -153,6 +95,7 @@
                             </div>
                         </div>
                     </div>
+                  </a>
                 </div>
                 
                 ";
@@ -175,7 +118,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="/ajax/cerca.js"></script>
+  <script src="/funzioni/cerca.js"></script>
   
 
 

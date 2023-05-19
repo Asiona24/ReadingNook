@@ -5,9 +5,12 @@ CREATE TABLE IF NOT EXISTS Libro(
 	titolo 			VARCHAR(35)		NOT NULL,
 	data_rilascio  	DATE 			,	--nullable
 	copertina 		VARCHAR(100)	UNIQUE NOT NULL,
-	valutazione 	INT				DEFAULT 0
+	sito 			VARCHAR(300)	UNIQUE NOT NULL,
+	lingua			varchar(30)						,
+	trama 			VARCHAR(900)	,
+	valutazione 	DECIMAL				DEFAULT 0
 						CONSTRAINT rating_libro
-						CHECK(valutazione >= 0 AND valutazione < 10 )
+						CHECK(valutazione >= 0 AND valutazione <= 5 )
 	
 );
 
@@ -31,7 +34,9 @@ CREATE TABLE IF NOT EXISTS Autore(
 	PRIMARY KEY(id_autore),
 	id_autore 		INT				GENERATED ALWAYS AS IDENTITY,
 	nome 			VARCHAR(30)		NOT NULL,
-	cognome			VARCHAR(30)		NOT NULL
+	cognome			VARCHAR(30)		NOT NULL,
+	bio				VARCHAR(900)    		,
+	foto			VARCHAR(300)
 );
 
 --relazione(N,N)
@@ -48,20 +53,18 @@ CREATE TABLE IF NOT EXISTS Utente(
 	id_utente 		INT 			GENERATED ALWAYS AS IDENTITY,
 	nome 			VARCHAR(30)		NOT NULL,
 	cognome 		VARCHAR(30)		NOT NULL,
-	ddn				INT						,
+	ddn				DATE						,
 	data_iscrizione DATE 			NOT NULL,
 	email 			VARCHAR(150)		UNIQUE NOT NULL
 							CONSTRAINT email
 							CHECK(email LIKE '%_@_%.__%'),
 	pswd 			VARCHAR(255)		NOT NULL,
-	img_profilo		VARCHAR(300) --???
+	country			VARCHAR(30)					,
+	city 			VARCHAR(30)					,
+	img_profilo		VARCHAR(300) 
 );
 
-ALTER TABLE Utente
-ADD COLUMN country VARCHAR(100),
-ADD COLUMN city VARCHAR(100),
-ADD COLUMN username VARCHAR(100) UNIQUE
-;
+
 
 
 --Relationship(1,N)
@@ -75,9 +78,10 @@ CREATE TABLE IF NOT EXISTS Recensioni(
 	id_utente			INT
 							REFERENCES Utente(id_utente),
 	testo 				VARCHAR(300)	,
-	valutazione			INT
+	orario				TIMESTAMP		NOT NULL,
+	valutazione			DECIMAL			NOT NULL
 							CONSTRAINT rating
-							CHECK(valutazione > 0 AND valutazione < 10)
+							CHECK(valutazione >= 0 AND valutazione <= 5)
 
 );
 
@@ -105,6 +109,10 @@ SELECT titolo,copertina,genere,valutazione
 FROM (Libro JOIN Genere_libro ON Libro.id_libro = Genere_libro.id_libro)
 JOIN Genere ON Genere.id_genere = Genere_libro.id_genere;
 
+CREATE VIEW Media AS
+SELECT id_libro, AVG(valutazione) AS avgscore
+FROM recensioni 
+GROUP BY id_libro;
 
 
 

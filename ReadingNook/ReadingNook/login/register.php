@@ -10,7 +10,7 @@
     <link rel="icon" type="image/x-icon" href="/ReadingNook/images/favicon.ico">
     <!-- Nostre Modifiche-->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="/css/login.css">
     <!--Boostrap Icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <!-- Per aggiungere effetto on hover al nav con jquery-->
@@ -58,65 +58,11 @@
 </head>
 
 <body>
-  <div class="sticky-top">
-    <nav class="navbar navbar-expand-lg ">
-      <div class="container-fluid">
-        <a class="navbar-brand" id="titolo" href="/ReadingNook/home/home.php">ReadingNook</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/ReadingNook/home/home.php">Home</a>
-            </li>
-
-            <li class="nav-item dropdown">
-
-
-              <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Browse
-              </a>
-
-
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li id="author-page"><a class="dropdown-item" href="/ReadingNook/home/authors.php">Authors</a></li>
-                <li><a class="dropdown-item" href="/ReadingNook/home/generi.php">Genres</a></li>
-              </ul>
-
-
-            </li>
-
-            <li class="nav-item">
-              <a href="/ReadingNook/home/profile/area_privata.php" class="nav-link">Profile</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="/ReadingNook/home/contacts.php">Contacts</a>
-            </li>
-            
-          </ul>
-          <form class="d-flex justify-content-center" id="form">
-            <!-- DA SOSTITUIRE LE ICONE -->
-           
-            <input id="search" class="form-control" type="text" autocomplete="off" placeholder="Search" aria-label="Search">
-            
-            <ul class="dropdown" id="dropdown">  
-            </ul>
-          
-
-
-            <button id="login-btn" type="button" class="btn btn-outline-success m-1 ms-2" onclick="location.href=' /ReadingNook/login/login.php'"><i class="bi bi-person-circle fa-lg p-1"></i></button>
-          </form>
-          
-        </div>
-      </div>
-    </nav>
-  </div>
-
-     <section class="form-02-main">
+  
+  <?php include "/Users/asiamazzotta/Desktop/ReadingNook/componenti/navbar.php"; ?>
+  
+  <div class="conteiner-fluid">
+  <section class="form-02-main">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
@@ -127,7 +73,7 @@
                     <img src="/ReadingNook/images/user.png" class="ms-2">
                   </div>
 
-                  <form name='formsignup' class="form" id="a-form" method="post" action="" onsubmit="return controllaPassword();">
+                  <form name='formsignup' class="form" id="a-form" method="post" action="">
 
                     <h2 class="form_title title" style="text-align:center;">Sign up here</h2>
                     
@@ -159,29 +105,34 @@
           </div>
         </div>
      </section>
+  </div>
+     
 
 
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/ajax/cerca.js"></script>
+    <script src="/funzioni/cerca.js"></script>
 
     <script type="text/javascript">
       $("#a-form").submit(function() {
-        // passo i dati (via POST) al file PHP che effettua le verifiche 
-        $.post("/ajax/process-signup.php", { nome: $('#name').val() , cognome: $('#surname').val() , email: $('#email-signup').val() , password: $('#password-signup').val() }, function(risposta) {
-          // se i dati sono corretti...
-          if (risposta == 1) {
-            document.location = '/ReadingNook/home/profile/area_privata.php';
-          // se, invece, i dati non sono corretti...
-          }else{
-            // stampo un messaggio di errore
-            $("#messaggio").fadeTo(200, 0.1, function() {
-              $(this).removeClass().addClass('errore').text('User already registered with this email!').css('color','black').fadeTo(900,1);
+        if(controllaPassword()){
+              // passo i dati (via POST) al file PHP che effettua le verifiche 
+            $.post("/funzioni/process-signup.php", { nome: $('#name').val() , cognome: $('#surname').val() , email: $('#email-signup').val() , password: $('#password-signup').val() }, function(risposta) {
+              // se i dati sono corretti...
+              if (risposta == 1) {
+                document.location = '/ReadingNook//home/area_privata.php';
+              // se, invece, i dati non sono corretti...
+              }else{
+                // stampo un messaggio di errore
+                $("#messaggio").fadeTo(200, 0.1, function() {
+                  $(this).removeClass().addClass('errore').text('User already registered with this email!').css('color','black').fadeTo(900,1);
+                });
+              }
             });
-          }
-        });
-        // evito il submit del form (che deve essere gestito solo dalla funzione Javascript)
-        return false;
+            // evito il submit del form (che deve essere gestito solo dalla funzione Javascript)
+            return false;
+            }
+        
       });
     </script>
 
