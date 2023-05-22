@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Pixels&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap');
+nav{
+    background-color: #b3deef ;
+    font-weight:bold;
+    position: fixed;
+}
+#titolo{
+    font-family: 'Constantia', cursive;
+    font-size:x-large;
+    font-weight: bold;
+}
+h4{
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+@media (max-width:700px) {
+    h4{
+        text-align: center;
+    }
+}
+
+
+h6{
+    text-align: center;
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+
+}
+
+.active{
+    background-color: gray;
+    border-color: gray;
+}
+#pallini{
+    text-align: center;
+}
+
+
+table{
+    table-layout: fixed;
+    width: calc(100%/3);
+}
+
+.autore_link{
+    font-family: 'Merriweather', serif;
+    text-align: center;
+    
+}
+
+.autore_link a {
+    color: rgba(95, 91, 91, 0.749);
+    text-decoration: underline;
+    text-decoration-color: rgba(95, 91, 91, 0.749);
+}
+
+.copertina{
+    max-height: 250px !important;
+    max-width: 160px !important;
+    min-height: 250px;
+    max-width: 160px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*CSS PER PAGINA FAQ*/
+
+
+
+.faq-heading{
+  border-bottom: #777;
+  padding: 20px 60px;
+}
+.faq-container{
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+}
+.hr-line{
+width: 60%;
+margin: auto;
+
+}
+/* Style the buttons that are used to open and close the faq-page body */
+.faq-page {
+  /* background-color: #eee; */
+  color: #444;
+  cursor: pointer;
+  padding: 30px 20px;
+  width: 60%;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  margin: auto;
+
+}
+.faq-body{
+  margin: auto;
+  /* text-align: center; */
+ width: 50%; 
+ padding: auto;
+ 
+}
+
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.faq-page:hover {
+  background-color: #F9F9F9;
+}
+
+/* Style the faq-page panel. Note: hidden by default */
+.faq-body {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+
+.faq-page:after {
+  content: '\02795';
+  /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796";
+  /* Unicode character for "minus" sign (-) */
+}
+
+
+#tornasu{
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  display: none;
+  padding:10px;
+  }

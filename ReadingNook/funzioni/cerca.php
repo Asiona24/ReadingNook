@@ -43,4 +43,7 @@ if ((isset($_POST['s'])) and ($_POST['s']!= "")) {
 		
 	
 }
+//chiudo o no il $connect??
+
+
 ?>

@@ -14,7 +14,6 @@
 
     //Cambio immagine del profilo
     if(isset($_POST['invia'])){
-        /*Cancello la foto iniziale se ci sta e faccio l'upload di quella nuova */
 
 
         $photo = $_FILES['image']['name'];
@@ -44,6 +43,11 @@
         header("Refresh:0");
     }
 
+
+?>
+<?php
+    pg_free_result($result);
+    pg_close($connect);
 ?>
 
 <!doctype html>
@@ -64,12 +68,27 @@
     <!-- Per aggiungere effetto on hover al nav con jquery-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    
+    <script>
+        function controllaPassword(){
+        var confirm = document.pswd.new.value;
+        var password = document.pswd.controlla.value;
+        if(password != confirm){
+          alert("The passwords must match!");
+          return false;
+        }
+        var regularExpression = /^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$/;
+        if(password.match(regularExpression)) {
+          alert("Password must have more than eight characters, at least one number, one uppercase letter, one lowercase letter and one special characters.");
+          return false;
+        }
+        return true;
+      };
+    </script>    
 
 </head>
 
 <body>
-  <?php include '/Users/asiamazzotta/Desktop/ReadingNook/componenti/navbar.php'; ?>
+  <?php include '../../componenti/navbar.php'; ?>
 
 
 
@@ -151,11 +170,64 @@
             </div>
         </div>
     </div>
+    <div class="row m-auto justify-content-center mt-2 mb-4">
+            <div class="col-xl-8">
+                <div class="card mb-4 mb-xl-0">
+                    <div class="card-header text-center">Change Password</div>
+                        <form id="a-form" action="settings.php" method="post" name="pswd" onsubmit="return controllaPassword();">
+                            <div class="card-body text-center">
+                                <!-- Profile picture image-->
+                                <div class="row justify-content-center">
+                                    <div class="col-md-3 col-sm-12">
+                                        <label class="small mb-1" for="firstname">Current Password</label>
+                                        <input class="form-control" id="pswd" name="pswd" type="password" placeholder="Enter current password" required>
+                                    </div>
+                                    <div class="col-md-3 col-sm-12">
+                                        <label class="small mb-1" for="firstname">New Password</label>
+                                        <input class="form-control" id="new" name="new" type="password" placeholder="Enter new password" required>
+                                    </div>
+                                    <div class="col-md-3 col-sm-12">
+                                        <label class="small mb-1" for="firstname">Current Password</label>
+                                        <input class="form-control" id="controlla" name="controlla" type="password" placeholder="Repeat new password" required>
+                                    </div>
+                                    
+                                </div>
+                                <input type="submit" name="pswd" class="btn btn-primary mt-3" value="Change Password">
+                                <div id="messaggio"></div>
+                            </div>    
+                        </form>
+                        
+                </div>
+            </div>
+    </div>
+    <?php include '../../componenti/footer.php'; ?>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/funzioni/cerca.js"></script>
-
+    <script type="text/javascript">
+      $("#a-form").submit(function() {
+        if(controllaPassword()){
+              // passo i dati (via POST) al file PHP che effettua le verifiche 
+            $.post("/funzioni/change-password.php", { old: $('#pswd').val() , new: $('#new').val()}, function(risposta) {
+              // se i dati sono corretti...
+              if (risposta == 1) {
+                alert('Password Changed!');
+                location.reload();
+              // se, invece, i dati non sono corretti...
+              
+              }else{
+                // stampo un messaggio di errore
+                alert('Current Password Not Correct! :' . risposta);
+              }
+            });
+            // evito il submit del form (che deve essere gestito solo dalla funzione Javascript)
+            return false;
+            }
+        
+      });
+    </script>
 
 </body>
 </html>

@@ -14,7 +14,7 @@
     $result = pg_query($connect,$controllo);
     $line = pg_fetch_array($result,null,PGSQL_ASSOC);
     if($line == null){
-        $query1 = "INSERT INTO Utente (nome,cognome,email,pswd,data_iscrizione) VALUES ('$nome','$cognome','$email','$password','$data');";
+        $query1 = "INSERT INTO Utente (nome,cognome,email,pswd,data_iscrizione,img_profilo) VALUES ('$nome','$cognome','$email','$password','$data','/ReadingNook/images/user.png');";
         pg_query($connect,$query1);
 
 

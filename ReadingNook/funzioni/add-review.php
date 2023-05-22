@@ -12,12 +12,14 @@ $query = "INSERT INTO Recensioni(id_utente,id_libro,testo,orario,valutazione) VA
           ($id_utente,$id_libro,'$testo',current_timestamp,$valutazione);";
 
 
-$result = pg_query($connect,$query);
-$query = "UPDATE Libro
-          SET valutazione = Media.avgscore
-          FROM Libro INNER JOIN Media
-          WHERE Libro.id_libro = Media.id_libro; ";
+pg_query($connect,$query);
+$query = "UPDATE Libro SET valutazione=(SELECT avgscore FROM Media WHERE Libro.id_libro = Media.id_libro) WHERE id_libro = $id_libro; ";
+pg_query($connect,$query);
+
+pg_close($connect);
+
 
 header('Location: ' . $_SESSION['url'] );
+exit;
 
 ?>

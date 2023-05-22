@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About us</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ReadingNook</title>
+
+    <!--Per le stelline-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    
     <!-- Per l'icona del titolo -->
     <link rel="icon" type="image/x-icon" href="/ReadingNook/images/favicon.ico">
-    
+
     <!-- Nostre Modifiche-->
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/about-us.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
     <!--Boostrap Icons-->
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <!-- Per aggiungere effetto on hover al nav con jquery-->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     
@@ -33,8 +39,8 @@
    
     <!-- risorse per slide ecc-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
+   
+    
 
  
 </head>
@@ -42,7 +48,7 @@
 
   <a name="iniziopag"></a>
     
-  <?php include '/Users/asiamazzotta/Desktop/ReadingNook/componenti/navbar.php'; ?>
+  <?php include '../../componenti/navbar.php'; ?>
 
   
       <!-- Carousel -->
@@ -108,7 +114,7 @@
       </div>
       
       <div class="row">
-        <div class="col text-center" style="text-align: left;">
+        <div class="col-md col-sm-12 text-center" style="text-align: left;">
 
           <img class="bd-placeholder-img rounded-circle border border-rounded" width="140" height="140" src="/ReadingNook/images/3.jpeg" ></img>
           <h2 class="mt-1 mb-1">Asia Mazzotta</h2>
@@ -116,9 +122,9 @@
 
         </div>
 
-        <div class="col-5"></div>
+        <div class="col-md-5 mt-5"></div>
         
-        <div class="col text-center" style="text-align: righ;">
+        <div class="col-md col-sm-12 text-center" style="text-align: righ;">
 
           <img class="bd-placeholder-img rounded-circle border border-2" width="140" height="140" src="/ReadingNook/images/3.jpeg" ></img>
           <h2 class="mt-1 mb-1">Sabrina Natili</h2>
@@ -145,7 +151,7 @@
 
       <div class="row featurette">
         <div class="col-md-7 order-md-2">
-          <h2 class="featurette-heading">Life with a book is always better. <span class="text-muted">Look at our site for ispiration.</span></h2>
+          <h2 class="featurette-heading">Life with a book is always better. <span class="text-muted">Look at our site for inspiration.</span></h2>
           
         </div>
         <div class="col-md-5 order-md-1">
@@ -185,7 +191,7 @@
   
     
     
-    <?php include '/Users/asiamazzotta/Desktop/ReadingNook/componenti/footer.php';?>
+    
     <!-- ICONA PER TORNARE SU-->
 
 <a href="#iniziopag">
@@ -197,6 +203,9 @@
 
 </div>
 </a>
+
+<?php include '../../componenti/footer.php'; ?>
+
 
 <script>
 
@@ -213,11 +222,9 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/funzioni/cerca.js"></script>
-    <script src="/funzioni/high-rating.js"></script>
-    <script src="/funzioni/recent-add.js"></script>
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/funzioni/cerca.js"></script>
+  
 
 </body>
 

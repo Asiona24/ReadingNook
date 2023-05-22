@@ -59,7 +59,7 @@
 
 <body>
   
-  <?php include "/Users/asiamazzotta/Desktop/ReadingNook/componenti/navbar.php"; ?>
+  <?php include '../../componenti/navbar.php'; ?>
   
   <div class="conteiner-fluid">
   <section class="form-02-main">
@@ -106,21 +106,34 @@
         </div>
      </section>
   </div>
-     
-
+  <?php include '../../componenti/footer.php'; ?>
+  
 
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/funzioni/cerca.js"></script>
 
     <script type="text/javascript">
+      var url = "";
+      $(document).ready(function(){
+        if(sessionStorage.getItem("url") != null){
+          url = sessionStorage.getItem("url");
+        }
+      })
+     
       $("#a-form").submit(function() {
         if(controllaPassword()){
               // passo i dati (via POST) al file PHP che effettua le verifiche 
             $.post("/funzioni/process-signup.php", { nome: $('#name').val() , cognome: $('#surname').val() , email: $('#email-signup').val() , password: $('#password-signup').val() }, function(risposta) {
               // se i dati sono corretti...
               if (risposta == 1) {
-                document.location = '/ReadingNook//home/area_privata.php';
+                if(url == ""){
+                  document.location = '/ReadingNook//home/area_privata.php';
+                }else{
+                  sessionStorage.removeItem('url');
+                  document.location = url;
+                }
+                
               // se, invece, i dati non sono corretti...
               }else{
                 // stampo un messaggio di errore

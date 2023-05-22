@@ -51,7 +51,7 @@
 
 <body>
     
-    <?php include "/Users/asiamazzotta/Desktop/ReadingNook/componenti/navbar.php"; ?>
+    <?php include '../../componenti/navbar.php'; ?>
 
     <section class="form-02-main">
       <div class="container">
@@ -73,7 +73,9 @@
                   <div class="form-check form-switch">
                     <input type="checkbox" class="form-check-input" onclick="myFunction()">Show Password
                   </div>
-                  
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="rmb" id="rmb" value="1">Remember me
+                  </div>
                   
                   <div id="messaggio"></div>
                   <div class="form-group">
@@ -108,7 +110,7 @@
       ?>
   </div>
 
-
+  <?php include '../../componenti/footer.php'; ?>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
@@ -123,14 +125,19 @@
       $(document).ready(function(){
         if(sessionStorage.getItem("url") != null){
           url = sessionStorage.getItem("url");
-          sessionStorage.removeItem("url");
         }
       })
 
 
       $("#b-form").submit(function() {
         // passo i dati (via POST) al file PHP che effettua le verifiche 
-        $.post("/funzioni/process-login.php", { password: $('#password-login').val(), email: $("#email-login").val() }, function(risposta) {
+        cond = $('#rmb').is(":checked");
+        if(cond){
+          check = 1;
+        }else{
+          check = 0;
+        }
+        $.post("/funzioni/process-login.php", { password: $('#password-login').val(), email: $("#email-login").val(), rmb: check }, function(risposta) {
           // se i dati sono corretti...
           if (risposta == 1) {
             // applico l'effetto allo span con id "messaggio"
@@ -139,6 +146,7 @@
               $(this).removeClass().addClass('corretto').text('Login in corso...').css('color','black').fadeTo(900, 1, function() {
                 // al termine effettuo il redirect alla pagina privata o alla pagina precedente se serve
                 if(url!=""){
+                  sessionStorage.removeItem('url');
                   document.location = url;
                 }else{
                   document.location = '/ReadingNook//home/area_privata.php';

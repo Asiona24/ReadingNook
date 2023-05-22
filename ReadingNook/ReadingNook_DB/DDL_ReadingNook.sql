@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS Utente(
 	pswd 			VARCHAR(255)		NOT NULL,
 	country			VARCHAR(30)					,
 	city 			VARCHAR(30)					,
-	img_profilo		VARCHAR(300) 
+	img_profilo		VARCHAR(300) 	DEFAULT '/ReadingNook/images/user.png'
 );
 
 
@@ -95,6 +95,7 @@ LIMIT 9;
 
 CREATE VIEW Valutazione AS
 SELECT * FROM Libro
+WHERE Valutazione = 0 OR Valutazione > 3
 ORDER BY valutazione DESC
 LIMIT 9;
 
@@ -114,5 +115,10 @@ SELECT id_libro, AVG(valutazione) AS avgscore
 FROM recensioni 
 GROUP BY id_libro;
 
+CREATE VIEW Raccomandati AS
+SELECT titolo,Recensioni.orario
+FROM Libro JOIN Recensioni ON Libro.id_libro = Recensioni.id_libro
+WHERE Recensioni.valutazione > 3
+ORDER BY Recensioni.orario LIMIT 5;
 
 

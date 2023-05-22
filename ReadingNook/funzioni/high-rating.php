@@ -20,7 +20,7 @@
     //"SELECT titolo,copertina FROM Libro ORDER BY id_libro LIMIT $record_per_page OFFSET $startfrom";
     $query = "SELECT titolo,copertina,valutazione FROM Valutazione LIMIT $record_per_page OFFSET $startfrom;";
     $result = pg_query($connect,$query);
-    
+   
 
     $output .= "
     
@@ -35,6 +35,7 @@
         $copertina = $row["copertina"];
         $titolo = $row["titolo"];
         $valutazione = $row["valutazione"];
+        $valutazione = round($valutazione,1);
         $val = ($valutazione / 5) * 100;
         $val = round($val/10)*10;
         $val = "$val%";
@@ -63,7 +64,7 @@
 
 
     }
-    $output .= "</div><div id=\"pallini\" class=\"mt-1\">";
+    $output .= "</div><div id=\"pallini\" class=\"mt-3\">";
 
     $page_query = "SELECT titolo,copertina FROM Libri_recenti;";
     $page_result = pg_query($connect,$page_query);

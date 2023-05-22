@@ -4,8 +4,9 @@
     }else{
         $genere = $_GET['genere'];
         $connect = pg_connect("host=localhost port=5432 dbname=readingnook user=postgres password=24082001") or die('Could not connect: ' . pg_last_error());
-        $query = "SELECT * FROM Libri WHERE genere = '$genere' ";
+        $query = "SELECT * FROM (Libri JOIN Visualizza_libri on Libri.titolo = Visualizza_libri.titolo) WHERE genere = '$genere' ";
         $result = pg_query($connect,$query);
+  
         $output = "";
     }
 ?>
@@ -31,76 +32,95 @@
 </head>
 
 <body>
-  <?php include "/Users/asiamazzotta/Desktop/ReadingNook/componenti/navbar.php"; ?>
+  <?php include '../../componenti/navbar.php'; ?>
 
   
 
   <div class="conteiner-fluid">
-    <div class="row">
-          <div class="col-md-8 col-sm-12 mx-auto mt-5">
-            <div class="input-group">
-                
-                <input type="text" class="form-control">
-                <div class="input-group-append">
-                  <span class="input-group-text"><i class="bi bi-search"></i></span>
-                </div>
-                
-                
+    <div class="row" style="margin: auto;">
+            <div class="col-md-8 col-sm-12 mx-auto mt-5">
+              <div class="input-group">
+                  
+                  <input type="text" class="form-control" id="barra">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                  </div>
+                  
+                  
+              </div>
             </div>
-          </div>
-            
-    </div>
-        
+              
+      </div>
+          
     <br>
     <hr>
     <hr>  
-    <div id="genere">
-      <?php
-        
-
-        $output .= "
-          
-        <div class=\"row ms-2 me-2\">
-
-        ";
-
-        while($row = pg_fetch_array($result,null,PGSQL_ASSOC)){
-          $copertina = $row["copertina"];
-          $titolo = $row["titolo"];
-          $valutazione = $row["valutazione"];
-          $val = ($valutazione / 5) * 100;
-          $val = round($val/10)*10;
-          $val = "$val%";
-
-          $output .= "
-          <div class=\"col-md-4 p-3 mt-1\">
-            <a href=\"/ReadingNook/books/book.php?titolo=$titolo\" class=\"text-decoration-none\">
-              <div class=\"card\">
-                  <img src=\"$copertina\" class=\"card-img-top mt-2 copertina\">
-                  <div class=\"card-body\">
-                      <h6 class=\"card-title titolo\">$titolo</h6>
-                      <div class=\"stelline\">
-                          <div class=\"stars-outer\">
-                              <div class=\"stars-inner\" style=\"width: $val;\"></div>
-                          </div>
-                          <span class=\"number-rating\">$valutazione</span>
-                      
+    <div id="genere" class="conteiner">
+      <div class="row" style="margin: auto;" id="1">
+        <?php
+            $colonne = "";
+            while($row = pg_fetch_array($result,null,PGSQL_ASSOC)){
+              //dati libro
+              $copertina = $row["copertina"];
+              $titolo = $row["titolo"];
+              $valutazione = $row["valutazione"];
+              $valutazione = round($valutazione,1);
+              $val = ($valutazione / 5) * 100;
+              $val = round($val/10)*10;
+              $val = "$val%";
+              //dati autore
+              $nome =$row['nome'];
+              $cognome = $row['cognome'];
+             
+              
+              $colonne .= "
+              <div class=\"cerca col-md-4 mt-4 d-block\">
+              
+                <div class=\"card h-100\">
+                  <div class=\"row\">
+                    <div class=\"col-4\">
+                      <img src=\"$copertina\" class=\"card-img img-fluid mt-lg-0 mt-md-4\">
+                    </div>
+                    <div class=\"col\">
+                      <div class=\"card-body mt-2\">
+                        <h5 class=\"card-title text-center\"><a href=\"/ReadingNook/books/book.php?titolo=$titolo\" class=\"text-dark\">$titolo</a></h5>
+                        <h6 class=\"card-title\"><a class=\"text-secondary\" href=\"/ReadingNook/author/author.php?nome=$nome&cognome=$cognome\">$nome $cognome</a></h6>
+                        <div class=\"stelline\">
+                            <div class=\"stars-outer\">
+                                <div class=\"stars-inner\" style=\"width: $val;\"></div>
+                            </div>
+                            <span class=\"number-rating\">$valutazione</span>
+                    
+                        </div>
                       </div>
+                    </div>
                   </div>
-              </div>
-            </a>
-          </div>
-          ";
-        }
-        $output .= "</div>";
-        echo $output;
-        pg_free_result($result);
-        pg_close($connect);
-      ?>
 
+
+
+                  
+                </div>
+              
+              </div>
+              
+              
+              
+              
+              
+              
+              ";
+
+            }
+            echo $colonne;
+
+            pg_free_result($result);
+            pg_close($connect);
+          ?>    
+      </div>
     </div>
   </div>
   
+  <?php include '../../componenti/footer.php'; ?>
 
   
     
@@ -118,10 +138,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/funzioni/cerca.js"></script>
-    
-
-
-
+   
 
 </body>
 

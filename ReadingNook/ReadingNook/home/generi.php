@@ -18,7 +18,7 @@
   
 </head>
 <body>
-  <?php include "/Users/asiamazzotta/Desktop/ReadingNook/componenti/navbar.php"; ?>
+  <?php include '../../componenti/navbar.php'; ?>
 
   <h4 class="text-center mt-4  fst-italic text-decoration-underline">All Genres</h4>
 
@@ -90,11 +90,13 @@
           
           
           
-          
+          pg_free_result($result);
           pg_close($connect);
       ?>    
     </div>
   </div>
+  <?php include '../../componenti/footer.php'; ?>
+  
 
 
     
