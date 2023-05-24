@@ -27,7 +27,7 @@
 
   <h4 class="text-center mt-4  fst-italic text-decoration-underline">All Authors</h4>
   
-  
+  <!-- PRENDO TUTTI I NOMI DEGLI AUTORI DAL DB E LI INSERISCO IN UNA TABELLA-->
   <div class="conteiner-fluid">
     <div class="row g-0">
     <?php
@@ -72,6 +72,7 @@
             $cognome = $line['cognome'];
             //$path = "/ReadingNook/authors/".$nome ."-". str_replace(" ","",$cognome) . ".php";
             $i = strtolower(substr($nome,0,1));
+            //A OGNI AUTORE ASSOCIO UN LINK PER LA GET CON CUI PRENDO LA PAGINA SPECIFICA IN /author/author.php
             $lista[$i] .= "
             
               <li class=\"list-group-item fs-5\" style=\"background-color:rgba(149, 221, 250, 0.15);\"><a href=\"/ReadingNook/author/author.php?nome=$nome&cognome=$cognome\">$nome $cognome</a></li>
@@ -97,6 +98,7 @@
           
           pg_free_result($result);
           pg_close($connect);
+          
       ?>    
     </div>
   </div>

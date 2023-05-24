@@ -23,7 +23,7 @@
   <h4 class="text-center mt-4  fst-italic text-decoration-underline">All Genres</h4>
 
   
-
+  <!-- PRENDO TUTTII I GENERI PRESENTI DEL DB E IL CARICO IN UNA TABELLA-->
   <div class="conteiner-fluid">
     <div class="row g-0">
     <?php
@@ -66,6 +66,7 @@
           while($line = pg_fetch_array($result,null,PGSQL_ASSOC)){
             $genere = $line['genere'];
             $i = strtolower(substr($genere,0,1));
+            //CONTROLLO CON CHE LETTERA INIZIA IL GENERE E LE POSIZIONO NELLA TABELLA INSERENDOCI UN LINK PER LA GET CON CUI POSSO VEDERE I LIBRI CHE HANNO QUEL GENERE
             $lista[$i] .= "
             
               <li class=\"list-group-item fs-5\" style=\"background-color:rgba(149, 221, 250, 0.15);\"><a href=\"/ReadingNook/genres/genre.php?genere=$genere\">$genere</a></li>
@@ -92,6 +93,7 @@
           
           pg_free_result($result);
           pg_close($connect);
+          
       ?>    
     </div>
   </div>

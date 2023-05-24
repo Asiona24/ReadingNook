@@ -1,7 +1,7 @@
 <?php
 
 
-   
+   //stesso funzionamento di high-rating.php
 
     $connect = pg_connect("host=localhost port=5432 dbname=readingnook user=postgres password=24082001") or die('Could not connect: ' . pg_last_error());
     $record_per_page = 3;
@@ -17,11 +17,12 @@
         $page = 1;
     }
     $startfrom = ($page - 1)*$record_per_page;
-    //"SELECT titolo,copertina FROM Libro ORDER BY id_libro LIMIT $record_per_page OFFSET $startfrom";
-    $query = "SELECT titolo,copertina,valutazione FROM Libri_recenti LIMIT $record_per_page OFFSET $startfrom;";
+   
+    $query = "SELECT titolo,copertina,valutazione,lingua FROM Libri_recenti LIMIT $record_per_page OFFSET $startfrom;";
     $result = pg_query($connect,$query);
     if(pg_num_rows($result) < 1){
         echo "";
+        
         exit();
     }    
 
@@ -42,6 +43,7 @@
         $val = ($valutazione / 5) * 100;
         $val = round($val/10)*10;
         $val = "$val%";
+        $lingua = $row['lingua'];
 
         $output .= "
         <div class=\"col-md\">
@@ -50,6 +52,7 @@
                     <img src=\"$copertina\" class=\"card-img-top mt-1 copertina\">
                     <div class=\"card-body\">
                         <h6 class=\"card-title titolo\">$titolo</h6>
+                        <h6 class=\"fw-lighter\">$lingua</h6>
                         <div class=\"stelline\">
                             <div class=\"stars-outer\">
                                 <div class=\"stars-inner\" style=\"width: $val;\"></div>
@@ -86,6 +89,7 @@
     echo $output; 
     pg_free_result($result);
     pg_free_result($page_result);
-    pg_close();
+    pg_close($connect);
+    
 
 ?>

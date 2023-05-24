@@ -4,7 +4,7 @@
         $nome = $_GET['nome'];
         $cognome = $_GET['cognome'];
         $query1= "SELECT * FROM Autore WHERE nome = '$nome' AND cognome = '$cognome';" ;
-        $query2 = "SELECT titolo,copertina,valutazione FROM Visualizza_libri WHERE nome = '$nome' AND cognome = '$cognome'";
+        $query2 = "SELECT titolo,copertina,valutazione,lingua FROM Visualizza_libri WHERE nome = '$nome' AND cognome = '$cognome'";
 
         $autore = pg_query($connect,$query1);
         $libri = pg_query($connect,$query2);
@@ -40,7 +40,7 @@
   <?php include '../../componenti/navbar.php'; ?>
 
   
-
+  <!--  DIV CHE CONTIENE TUTTE LE INFORMAZIONI DEL AUTORE NEL DB-->
   <div class="container-fluid pt-4">
     <div class="border border-2 rounded pb-4 px-1">
       <div class="row mt-4">
@@ -63,6 +63,8 @@
       <div class="row mt-4">
         <div class="container" id="libri">
             <?php 
+              //DIV CHE CONTIENE DELLE COL IN CUI CI SONO LE CARDS DEI LIBRI DELL'AUTORE CON IL LINK ALLA PAGINA DEL LIBRO
+
               $output .= "
               
                   <div id=\"foto\" class=\"row mt-4 mb-4\">
@@ -78,7 +80,7 @@
                 $val = ($valutazione / 5) * 100;
                 $val = round($val/10)*10;
                 $val = "$val%";
-                
+                $lingua = $row['lingua'];
                 $output .= "
                 
                 <div class=\"col-md-4 p-3 mt-1\">
@@ -87,6 +89,7 @@
                         <img src=\"$copertina\" class=\"card-img-top mt-2 copertina\">
                         <div class=\"card-body\">
                             <h6 class=\"card-title titolo\">$titolo</h6>
+                            <h6 class=\"fw-lighter\">$lingua</h6>
                             <div class=\"stelline\">
                                 <div class=\"stars-outer\">
                                     <div class=\"stars-inner\" style=\"width: $val;\"></div>
@@ -108,6 +111,7 @@
               pg_free_result($autore);
               pg_free_result($libri);
               pg_close($connect);
+              
               
             ?>
         </div>

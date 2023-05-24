@@ -217,7 +217,11 @@ ul li a{
 }
 
 
-
+@media (max-width: 700px ) {
+    .frase{
+        display: none;
+    }
+}
 
 
 

@@ -114,6 +114,7 @@
     <script src="/funzioni/cerca.js"></script>
 
     <script type="text/javascript">
+      //PER COMODITÀ CONTROLLO SE L'ACCESSO È STATO RICHIESTO PER UNA RECENSIONE IN CASO FACCIO IL REDIRECT
       var url = "";
       $(document).ready(function(){
         if(sessionStorage.getItem("url") != null){
@@ -144,6 +145,8 @@
             });
             // evito il submit del form (che deve essere gestito solo dalla funzione Javascript)
             return false;
+            }else{
+              return false;
             }
         
       });

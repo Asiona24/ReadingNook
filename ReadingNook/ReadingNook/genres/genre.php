@@ -1,10 +1,13 @@
 <?php
+
+    //CREO TUTTE LE PAGINE DEI GENERI PASSANDO UNA GET QUANDO CLICCO SUL LINK IN /home/generi.php
+
     if(!(isset($_GET['genere']))){
         header('Location: ' . '/ReadingNook/home/generi.php');
     }else{
         $genere = $_GET['genere'];
         $connect = pg_connect("host=localhost port=5432 dbname=readingnook user=postgres password=24082001") or die('Could not connect: ' . pg_last_error());
-        $query = "SELECT * FROM (Libri JOIN Visualizza_libri on Libri.titolo = Visualizza_libri.titolo) WHERE genere = '$genere' ";
+        $query = "SELECT * FROM (Libri_genere JOIN Visualizza_libri on Libri_genere.titolo = Visualizza_libri.titolo) WHERE genere = '$genere' ";
         $result = pg_query($connect,$query);
   
         $output = "";
@@ -40,7 +43,7 @@
     <div class="row" style="margin: auto;">
             <div class="col-md-8 col-sm-12 mx-auto mt-5">
               <div class="input-group">
-                  
+                  <!-- BARRA DI RICERCA CHE UTILIZZA LA FUNZIONE IN /funzioni/cerca.js SU id #barra-->
                   <input type="text" class="form-control" id="barra">
                   <div class="input-group-append">
                     <span class="input-group-text"><i class="bi bi-search"></i></span>
@@ -59,6 +62,8 @@
       <div class="row" style="margin: auto;" id="1">
         <?php
             $colonne = "";
+
+            //CREO LE CARDS CON DATI DEL LIBRO + NOME,COGNOME AUTORE E LE POSIZIONO IN COLONNE
             while($row = pg_fetch_array($result,null,PGSQL_ASSOC)){
               //dati libro
               $copertina = $row["copertina"];
@@ -71,7 +76,7 @@
               //dati autore
               $nome =$row['nome'];
               $cognome = $row['cognome'];
-             
+              $lingua = $row['lingua'];
               
               $colonne .= "
               <div class=\"cerca col-md-4 mt-4 d-block\">
@@ -85,14 +90,17 @@
                       <div class=\"card-body mt-2\">
                         <h5 class=\"card-title text-center\"><a href=\"/ReadingNook/books/book.php?titolo=$titolo\" class=\"text-dark\">$titolo</a></h5>
                         <h6 class=\"card-title\"><a class=\"text-secondary\" href=\"/ReadingNook/author/author.php?nome=$nome&cognome=$cognome\">$nome $cognome</a></h6>
+                        <h6 class=\"fw-lighter\">$lingua</h6>
                         <div class=\"stelline\">
                             <div class=\"stars-outer\">
                                 <div class=\"stars-inner\" style=\"width: $val;\"></div>
                             </div>
                             <span class=\"number-rating\">$valutazione</span>
-                    
+                            
                         </div>
+                        
                       </div>
+                      
                     </div>
                   </div>
 
@@ -115,6 +123,7 @@
 
             pg_free_result($result);
             pg_close($connect);
+            
           ?>    
       </div>
     </div>

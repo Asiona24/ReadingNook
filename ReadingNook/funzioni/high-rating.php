@@ -8,7 +8,7 @@
     $page = '';
     $output = '';
 
-
+    //CONTROLLO A CHE PAGINA STO: SE È LA PRIMA SETTO A 1
 
     if(isset($_POST["page"]))
     {
@@ -17,8 +17,14 @@
         $page = 1;
     }
     $startfrom = ($page - 1)*$record_per_page;
-    //"SELECT titolo,copertina FROM Libro ORDER BY id_libro LIMIT $record_per_page OFFSET $startfrom";
-    $query = "SELECT titolo,copertina,valutazione FROM Valutazione LIMIT $record_per_page OFFSET $startfrom;";
+
+    //QUERY CHE PRENDE I VALORI DALLA VIEW VALUTAZIONE IN BASE ALLA PAGINA IN CUI MI TROVO;
+    
+
+    //$offset = numero di cards per pagina; $startfrom = mi salvo il punto da cui sono partita delle pagine precedenti (si aggiorna a ogni pagina)
+
+    
+    $query = "SELECT titolo,copertina,valutazione,lingua FROM Valutazione LIMIT $record_per_page OFFSET $startfrom;";
     $result = pg_query($connect,$query);
    
 
@@ -39,6 +45,10 @@
         $val = ($valutazione / 5) * 100;
         $val = round($val/10)*10;
         $val = "$val%";
+        $lingua = $row['lingua'];
+
+        /*CREO LE CARDS CHE CONTENGONO IMMAGINE DEL LIBRO,TITOLO,LINGUA DI PUBBLICAZIONE E UN DIV PER LA VALUTAZIONE CREATO CON LE ICONE DI
+            FONT AWESOME (/css/style.css) */
 
         $output .= "
         <div class=\"col-md\">
@@ -47,6 +57,7 @@
                     <img src=\"$copertina\" class=\"card-img-top mt-1 copertina\">
                     <div class=\"card-body\">
                         <h6 class=\"card-title titolo\">$titolo</h6>
+                        <h6 class=\"fw-lighter\">$lingua</h6>
                         <div class=\"stelline\">
                             <div class=\"stars-outer\">
                                 <div class=\"stars-inner\" style=\"width: $val;\"></div>
@@ -64,6 +75,8 @@
 
 
     }
+    //creo la barra per la navigazione delle pagine che modifico con la classe 'pallini'
+
     $output .= "</div><div id=\"pallini\" class=\"mt-3\">";
 
     $page_query = "SELECT titolo,copertina FROM Libri_recenti;";
@@ -83,6 +96,7 @@
     echo $output; 
     pg_free_result($result);
     pg_free_result($page_result);
-    pg_close();
+    pg_close($connect);
+    
 
 ?>

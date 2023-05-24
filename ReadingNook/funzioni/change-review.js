@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    //appena faccio click sul tasto di modifica prendo i valori della form da passare al db con $.post e poi faccio iil reload della pagina
+
     $(".modifica").on("click",function(){
         var p = $(this);
         

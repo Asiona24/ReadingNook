@@ -35,7 +35,11 @@
       <div class="col-lg-6 col-md-12 order-lg-2">
         <ul class="list-group border border-1 rounded mb-3">
           <li class="list-group-item"><h4 class="text-center mt-1">Recommended</h4></li>
-          <?php
+
+            <?php
+            
+            //SCRIPT DI PHP CHE PRENDE 5 TITOLI DALLA VIEW RACCOMANDATI E SE RIMANE SPAZIO PRENDE ALTRI TITOLI CASUALI DA LIBRO CON LA FUNZIONE RANDOM()
+
             $connect = pg_connect("host=localhost port=5432 dbname=readingnook user=postgres password=24082001") or die('Could not connect: ' . pg_last_error());
             $query = "SELECT DISTINCT titolo FROM Raccomandati;";
             $result = pg_query($connect,$query);
@@ -79,7 +83,7 @@
         </div>
           
         <div id="high_rating" class="conteiner"></div>
-      
+            <!--  RIEMPIO IL DIV ATTRAVERSO UNA CHIAMATA AJAX PER FARE UNA PAGINAZIONE DI CARDS (/funzioni/high-rating.js)-->
       </div>
 
     </div>  
@@ -93,11 +97,13 @@
         </div>
           
         <div id="recent_reviews"></div>
-        
+        <!--  RIEMPIO IL DIV CON AJAX (/funzioni/recent-add.js)-->
 
       </div>
 
-      <div class="col-lg-6 col-md-12 d-lg-block d-md-none">
+      <div class="col-lg-6 col-md-12 d-lg-block frase">
+            <!--  FRASE PER RIEMPIRE LO SPAZIO QUANDO LO SCHERMO È GRANDE (display diventa none quando lo schermo è piccolo attraverso una query in /css/style.css) -->
+        
          <div class="row">
            <h4 class="text-center mt-1" style="font-family: cursive;">«There is no Frigate like a Book
                                         To take us Lands away,
@@ -142,7 +148,10 @@
     <!-- Per far apparire il menu a tendina, per la pagination-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- SCRIPT PER LA BARRA DI RICERCA DELLA NAVBAR-->
     <script src="/funzioni/cerca.js"></script>
+    <!--  SCRIPT PER RIEMPIRE I DUE DIV CON CARDS -->
     <script src="/funzioni/high-rating.js"></script>
     <script src="/funzioni/recent-add.js"></script>
     <script src="/funzioni/reload.js"></script>

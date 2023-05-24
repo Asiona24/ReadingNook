@@ -32,5 +32,6 @@
     }
 
     pg_free_result($result);
-    pg_close($connect);
+    pg_close();
+    
 ?>

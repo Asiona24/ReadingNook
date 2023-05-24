@@ -74,7 +74,7 @@
     <div class="border border-2 rounded pb-4 px-1">
       <div class="row mt-4">
         <div class="col-lg-3 col-md-12 text-center mt-4">
-          <img width="300" height="300" id="libro" src="<?php echo $libri['copertina']; ?>" class="img-thumbnail ms-3">
+          <img width="300" height="300" src="<?php echo $libri['copertina']; ?>" class="img-thumbnail ms-3">
         </div>
         <div class="col-lg col-md-12">
          
@@ -196,11 +196,11 @@
                 <input type="radio" id="rating3" name="rating" value="3" /><label class="half" for="rating3" title="1 1/2 stars"></label>
                 <input type="radio" id="rating2" name="rating" value="2" /><label for="rating2" title="1 star"></label>
                 <input type="radio" id="rating1" name="rating" value="1" /><label class="half" for="rating1" title="1/2 star"></label>
-                <input type="radio" id="rating0" name="rating" value="0" required/><label for="rating0" title="No star"></label>
+                <input type="radio" id="rating0" name="rating" value="0" required checked/><label for="rating0" title="No star"></label>
               </div>
 
-              <input type="hidden" name="utente" value="<?php echo $utente['id_utente'];?>">
-              <input type="hidden" name="libro" value="<?php echo $libri['id_libro']; ?>">
+              <input type="hidden" id="utente" name="utente" value="<?php echo $utente['id_utente'];?>">
+              <input type="hidden" id="libro" name="libro" value="<?php echo $libri['id_libro']; ?>">
             </div>
 
             
@@ -209,7 +209,7 @@
             <div class="col-md-9 col-sm-12 text-center mt-4">
               <div class="form-outline mb-4">
                 <span style="font-size: .875rem;color: #adb5bd;">Review must have max 300 characters</span>
-                <textarea class="form-control" name="testo" maxlength="300" rows="4"></textarea>
+                <textarea class="form-control" id="testo" name="testo" maxlength="300" rows="4"></textarea>
                 <label class="form-label" for="textAreaExample6"></label>
                 <input type="submit" class="btn btn-primary mt-3" value="Submit">
               </div>
@@ -346,8 +346,6 @@
           
           echo $mostra;
           
-          
-          pg_close($connect);
 
         ?>
       </div>
@@ -356,8 +354,16 @@
 
 
   </div>
+  
   <?php include '../../componenti/footer.php'; ?>
   
+  <?php
+    pg_free_result($recensione);
+    pg_free_result($result);
+    
+    pg_close($connect);
+    
+  ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -15,15 +15,18 @@
             $query = "UPDATE Utente SET pswd = '$password' WHERE id_utente = $id;";
             $result = pg_query($connect,$query);
             // e stampo 1 (che identifica il successo)
+            
             echo 1;
         }else{
             // in caso di comparazione non riuscita stampo zero
+            
             echo 0;
         }
     }else{
         // se non ci sono risultati stampo zero
         echo 0;
     }
-
+    pg_free_result($result);
     pg_close($connect);
+    
 ?>

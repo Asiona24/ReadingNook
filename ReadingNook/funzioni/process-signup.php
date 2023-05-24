@@ -3,7 +3,7 @@
     session_start();
 
     $connect = pg_connect("host=localhost port=5432 dbname=readingnook user=postgres password=24082001") or die('Could not connect: ' . pg_last_error());
-    
+    //SALVO I DATI DEL NUOVO UTENTE CONTROLLANDO SE LA EMAIL NON È STATA GIÀ USATA ALTRIMENTI MANDO ERRORE
     $nome = $_POST['nome'];
     $cognome = $_POST['cognome'];
     $email = $_POST['email'];
@@ -26,14 +26,17 @@
         $_SESSION['userid'] = $id;
 
 
-        pg_free_result($result);
-        pg_free_result($result1);
-        pg_close($connect);
+       
+        
         echo 1;
         
     }else{
+        
         echo 0;
     }
+    pg_free_result($result);
+    pg_free_result($result1);
+    pg_close($connect);
     
 
 

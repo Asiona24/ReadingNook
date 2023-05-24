@@ -1,4 +1,6 @@
 $(document).ready(function(){  
+    //CREO LA FUNZIONE JQUERY CHE UTILIZZA AJAX PER PRENDERE IL DIV DELLE CARDS CON SOTTO I NUMERI DELLE PAGINE (MODIFICATO CON CSS)
+
     load_data();  
     function load_data(page)  
     {  
@@ -11,6 +13,7 @@ $(document).ready(function(){
               }  
         })  
     }  
+    // QUANDO CLICCO SU UN NUMERO DELLA PAGINA CARICA IL VALORE RELATIVO IN BASE A 'ID'
     $(document).on('click', '.pagination_link1', function(){  
         var page = $(this).attr("id");  
         load_data(page);  

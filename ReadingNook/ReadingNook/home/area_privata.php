@@ -3,8 +3,12 @@
 session_start();
 // verifico che esista la sessione di autenticazione
 if (empty($_SESSION['userid'])) {
-  header('Location: '.' /ReadingNook/login/login.php');
-  exit;
+  if(isset($_COOKIE['id'])){
+    $_SESSION['userid'] = $_COOKIE['id'];
+  }else{
+    header('Location: '.' /ReadingNook/login/login.php');
+    exit;
+  }
 }else{
   $id = $_SESSION['userid'];
   $connect = pg_connect("host=localhost port=5432 dbname=readingnook user=postgres password=24082001") or die('Could not connect: ' . pg_last_error());
@@ -79,7 +83,7 @@ if (empty($_SESSION['userid'])) {
         <div class="row mt-4">
           <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
             <div class="card card-profile shadow">
-              
+              <!-- CARD CHE CONTIENE LE INFO DELL'UTENTE ED IL TASTO PER IL LOGOUT CHE RICHIAMA LA FUNZIONE /login/logout.php-->
               <!-- rettangolo in alto con Message-->
               <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                 <div class="d-flex justify-content-between">
@@ -162,6 +166,17 @@ if (empty($_SESSION['userid'])) {
               <div class="card-body" style="overflow-y:scroll; overflow-x:hidden; height:500px;line-height:5em;">
                
                   <?php
+                  /*
+                    DIV CHE CONTIENE TUTTE LE RECENSIONI FATTE DALL'UTENTE (SE NON CI SONO VISUALIZZO UNA FRASE)
+
+                    OGNI RECENSIONI MOSTRA L'IMMAGINE (SE LO SCHERMO È GRANDE) E IL TITOLO DEL LIBRO, LA VALUTAZIONE E IL TESTO INSERITI DALL'UTENTE
+                    E DUE TASTI: 
+                    1) TASTO MODIFICA CHE APRE UN MODAL DI BOOTSTRAP E CHE CONTIENE 4 VALORI PASSATI CON LA FUNZIONE JQUERY /funzioni/chenage-review.js AL DB CON $.post
+                      (passa VALUTAZIONE(radio), TESTO(textarea), ID_LIBRO (type hidden), ID_UTENTE (type hidden))
+                    2) TASTO CANCELLA PRESO DALLA FUNZIONE /funzioni/delete-review.js CHE PASSA ID_LIBRO E ID_UTENTE AL DB PER CANCELLARE LA ROW NELLA TABELLA RECENSIONI
+
+                    TUTTE E DUE LE FUNZIONI CHIAMANO UN UPDATE SU LIBRO PER AGGIORNARE LA MEDIA (grazie anche alla view Media)
+                  */
                   $d = "";
                   $i = 0;
                   if(pg_num_rows($result) == 0){

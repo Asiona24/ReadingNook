@@ -10,6 +10,9 @@
     $query = "UPDATE Libro SET valutazione=(SELECT coalesce(avgscore,0) FROM Media WHERE Libro.id_libro = Media.id_libro) WHERE id_libro = $libro;  ";
 
     pg_query($connect,$query);
+
+    $query = "UPDATE Libro SET valutazione = 0 WHERE valutazione IS NULL;";
+    pg_query($connect,$query);
     
     pg_close($connect);
 ?>

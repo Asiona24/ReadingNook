@@ -45,10 +45,6 @@
 
 
 ?>
-<?php
-    pg_free_result($result);
-    pg_close($connect);
-?>
 
 <!doctype html>
 <html lang="en">
@@ -82,6 +78,7 @@
           return false;
         }
         return true;
+        console.log('1');
       };
     </script>    
 
@@ -142,11 +139,11 @@
                                 
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="country">Country</label>
-                                    <input class="form-control" id="country" name="country" type="text" placeholder="Enter your country" value="<?php if($utente['country'] != null){echo $utente['country'];};?>">
+                                    <input class="form-control" id="country" name="country" type="text" placeholder="Enter your country" value="<?php if($utente['country'] != null){echo $utente['country'];};?>" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="city">City</label>
-                                    <input class="form-control" id="city" name="city" type="text" placeholder="Enter your city" value="<?php if($utente['city'] != null){echo $utente['city'];};?>">
+                                    <input class="form-control" id="city" name="city" type="text" placeholder="Enter your city" value="<?php if($utente['city'] != null){echo $utente['city'];};?>" required>
                                 </div>
                             </div>
                             <!-- Form Group (email address)-->
@@ -158,7 +155,7 @@
                                 <!-- Form Group (birthday)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="birthday">Birthday</label>
-                                    <input class="form-control" id="birthday" type="date" name="birthday" value="<?php echo $utente['ddn'] ?>">
+                                    <input class="form-control" id="birthday" type="date" name="birthday" value="<?php echo $utente['ddn'] ?>" required>
                                 </div>
                             </div>
                             
@@ -174,9 +171,9 @@
             <div class="col-xl-8">
                 <div class="card mb-4 mb-xl-0">
                     <div class="card-header text-center">Change Password</div>
-                        <form id="a-form" action="settings.php" method="post" name="pswd" onsubmit="return controllaPassword();">
+                        <form id="a-form" action="settings.php" method="post" name="pswd">
                             <div class="card-body text-center">
-                                <!-- Profile picture image-->
+                                <!-- PASSO TUTTI I DATI ALLA FUNZIONE JQUERY IN FONDO ALLA PAGINA $().SUBMIT()-->
                                 <div class="row justify-content-center">
                                     <div class="col-md-3 col-sm-12">
                                         <label class="small mb-1" for="firstname">Current Password</label>
@@ -200,6 +197,11 @@
                 </div>
             </div>
     </div>
+
+    <?php
+        pg_free_result($result);
+        pg_close($connect);
+    ?>
     <?php include '../../componenti/footer.php'; ?>
     
 
@@ -208,6 +210,7 @@
     <script src="/funzioni/cerca.js"></script>
     <script type="text/javascript">
       $("#a-form").submit(function() {
+        //CONTROLLO SE LA PASSWORD RISPETTA IL FORMAT STABILITO E SE COINCIDE
         if(controllaPassword()){
               // passo i dati (via POST) al file PHP che effettua le verifiche 
             $.post("/funzioni/change-password.php", { old: $('#pswd').val() , new: $('#new').val()}, function(risposta) {
@@ -219,13 +222,15 @@
               
               }else{
                 // stampo un messaggio di errore
-                alert('Current Password Not Correct! :' . risposta);
+                alert('Current Password Not Correct!');
               }
             });
             // evito il submit del form (che deve essere gestito solo dalla funzione Javascript)
             return false;
+            }else{
+                return false;
             }
-        
+            
       });
     </script>
 

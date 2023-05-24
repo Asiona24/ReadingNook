@@ -101,12 +101,12 @@ LIMIT 9;
 
 
 CREATE VIEW Visualizza_libri AS
-SELECT titolo,copertina,valutazione,nome,cognome
+SELECT titolo,copertina,valutazione,nome,cognome,lingua
 FROM (Libro JOIN Autore_libro ON Libro.id_libro = Autore_Libro.id_libro)
 JOIN Autore ON Autore_libro.id_autore = Autore.id_autore;
 
-CREATE VIEW Libri AS
-SELECT titolo,copertina,genere,valutazione
+CREATE VIEW Libri_genere AS
+SELECT titolo,copertina,genere,valutazione,lingua
 FROM (Libro JOIN Genere_libro ON Libro.id_libro = Genere_libro.id_libro)
 JOIN Genere ON Genere.id_genere = Genere_libro.id_genere;
 
@@ -116,9 +116,9 @@ FROM recensioni
 GROUP BY id_libro;
 
 CREATE VIEW Raccomandati AS
-SELECT titolo,Recensioni.orario
+SELECT titolo, Recensioni.orario
 FROM Libro JOIN Recensioni ON Libro.id_libro = Recensioni.id_libro
 WHERE Recensioni.valutazione > 3
-ORDER BY Recensioni.orario LIMIT 5;
+ORDER BY Recensioni.orario DESC LIMIT 5;
 
 

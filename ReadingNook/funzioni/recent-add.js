@@ -1,4 +1,6 @@
 $(document).ready(function(){  
+    //FUNZIONE JQUERY CON AJAX (stesso funzionamento di /funzioni/high-rating.php)
+
     load_data();  
     function load_data(page)  
     {  

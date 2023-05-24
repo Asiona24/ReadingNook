@@ -45,5 +45,8 @@ if ((isset($_POST['s'])) and ($_POST['s']!= "")) {
 }
 //chiudo o no il $connect??
 
+pg_free_result($result1);
+pg_free_result($result2);
+pg_close($connect);
 
 ?>
