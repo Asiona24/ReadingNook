@@ -15,7 +15,3 @@ Project is created with:
 
 ## Setup
 The website uses a postgres DB (the file to create the table are inside the ReadingNookDB folder)
-
-# Functional design specifications
-
-
